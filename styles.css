@@ -150,6 +150,9 @@ body {
 .sidebar img{
     margin-right: 20px;
 }
+.icons{
+    font-size: 20px;
+}
 
 hr{
     border: none;
@@ -300,11 +303,15 @@ details[open] .arrow-up {
     gap: 24px;
     margin-top: 30px;
 }
-/* .video-card{
-    width: 404px;
-    height: 227px;
-   
-} */
+.video-card{
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+} 
+.video-card:hover {
+    background-color: #f9e9e9;
+    padding: 10px;
+    border-radius: 10px;
+}
  .video-channel,
 .video-views {
     font-size: 14px;
@@ -316,13 +323,12 @@ details[open] .arrow-up {
     object-fit: cover;
     border-radius: 10px;
     display: block;
+    transition: border-radius 0.2s ease;
 }
-/* .video-card img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 10px;
+/* .video-card:hover .video-thumbnail {
+    border-radius: 4px;
 } */
+
 .video-text{
     display: flex;
     align-items: center;
@@ -344,6 +350,56 @@ details[open] .arrow-up {
     margin-top: 5px;
     
 }
-/* .video-info div{
-    padding-top: 5px;
-} */
+/* SHORT VIDEOS */
+.shorts-header{
+    display: flex;
+    gap: 10px;
+}
+.shorts-header p{
+    font-weight: 600;
+    font-size: 20px;
+}
+.shorts-section{
+    display: flex;
+    margin-top: 30px;
+    justify-content: space-between;
+    margin-left: 20px;
+    padding-right: 20px;
+}
+.shorts-icons{
+    font-size: 20px;
+    color: red;
+}
+.shorts-videos{
+    display: flex;
+    gap: 8px;
+}
+.shorts-text{
+    display: flex;
+    gap: 10px;
+    padding-top: 10px;
+}
+.shorts-card{
+    margin-top: 25px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+.shorts-card:hover {
+    background-color: #f9e9e9;
+    padding: 10px;
+    border-radius: 10px;
+}
+.shorts-card img{
+    border-radius: 10px;
+    width: 230px;
+    height: 320px;
+    object-fit: cover;
+}
+.text{
+    font-weight: 500;
+    padding-bottom: 5px;
+}
+.views {
+    color: #606060;
+    font-size: 15px;
+}

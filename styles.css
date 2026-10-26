@@ -125,6 +125,9 @@ body {
 .sidebar:hover::-webkit-scrollbar-thumb{
     background-color: #ccc;
 }
+.page-layout .sidebar{
+    padding-top: 15px;
+}
 .sidebar a{
     text-decoration: none;
     color: black;
@@ -286,6 +289,9 @@ details[open] .arrow-up {
 .category-nav::-webkit-scrollbar {
     display: none;
 }
+.main-content .category-nav{
+    padding-top: 10px;
+}
 
 .page-layout {
     display: flex;
@@ -294,6 +300,7 @@ details[open] .arrow-up {
     height: calc(100vh - 56px);
     height: calc(100dvh - 56px);
     min-height: 0;
+   
 }
 .main-content {
     flex: 1;
@@ -430,7 +437,71 @@ details[open] .arrow-up {
     margin: 0;
     padding: 0 24px;
     background: #fff;
-    border-bottom: 1px solid #e5e5e5;
+    /* border-bottom: 1px solid #e5e5e5; */
+}
+.watch-sidebar{
+    position: fixed;
+    height: 100vh;
+    background-color: white;
+    width: 300px;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    z-index: 30;
+    width: 230px;
+}
+.drawer-header{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 56px;
+    padding: 0 14px;
+    margin-bottom: 3px;
+}
+
+.drawer-header a:hover {
+    background-color: transparent;
+}
+.drawer-header img{
+    margin: 0;
+}
+.close-menu{
+     border: none;
+     background: none;
+     align-items: center;
+     cursor: pointer;
+}
+.open-menu{
+    border: none;
+    background: none;
+}
+.icon{
+     width: 24px;
+    height: 24px;
+    object-fit: contain;
+    
+}
+.logo{
+     width: 100px;
+    height: auto;
+}
+.watch-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: none;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 20;
+}
+.watch-body.menu-open .watch-sidebar {
+    transform: translateX(0);
+}
+
+.watch-body.menu-open .watch-backdrop {
+    display: block;
 }
 .watch-layout {
     display: grid;
@@ -439,7 +510,7 @@ details[open] .arrow-up {
     max-width: 1920px;
     margin: 16px auto;
     padding: 0 20px;
-}
+} 
 .watch-main-column {
     min-width: 0;
 }

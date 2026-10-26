@@ -9,8 +9,9 @@
 </head>
 <body class="watch-body">
     <header class="header watch-header">
+        
         <div class="header-left">
-         <button class="open-menu" type="button"><img src="image/hamburger.png" class="icon" alt="Menu"></button>
+         <button class="open-menu" type="button"  aria-expanded="false"><img src="image/hamburger.png" class="icon" alt="Menu"></button>
             <a href="index.html" aria-label="YouTube home"><img src="image/youtube.png" class="logo" alt="YouTube"></a>
         </div>
         <div class="header-center">
@@ -28,9 +29,17 @@
             <div class="profile" aria-label="Account">A</div>
         </div>
     </header>
-  <nav class="sidebar" aria-label="sidebar">
+  <nav class="sidebar watch-sidebar" aria-label="sidebar">
+    <div class="drawer-header">
+    <button class="close-menu" type="button" aria-label="Close menu">
+        <img src="image/hamburger.png" class="icon" alt="">
+    </button>
+    <a href="index.html" aria-label="YouTube home">
+        <img src="image/youtube.png" class="logo" alt="YouTube">
+    </a>
+</div>
       <div>
-        <a href="index.html" class="active sidebar-heading"><img src="image/house.png" width="30">Home</a>
+        <a href="index.html" sidebar-heading"><img src="image/house.png" width="30">Home</a>
         <a href="index.html" class="shorts"><i class="fa-brands fa-youtube-shorts icons"></i>Shorts</a>
       </div>
 <hr>
@@ -174,6 +183,7 @@
    </div>
    <hr>
     </nav>
+    <button class="watch-backdrop" type="button" aria-label="Close menu"></button>
     <main class="watch-layout">
         <section class="watch-main-column">
             <div class="watch-player" role="img" aria-label="Video preview. Playback is not connected yet.">
@@ -244,5 +254,20 @@
             </a>
         </aside>
     </main>
+    <script>
+  const menuButton = document.querySelector('.open-menu');
+  const backdrop = document.querySelector('.watch-backdrop');
+  const page = document.body;
+
+  menuButton.addEventListener('click', () => {
+    const isOpen = page.classList.toggle('menu-open');
+    menuButton.setAttribute('aria-expanded', isOpen);
+  });
+
+  backdrop.addEventListener('click', () => {
+    page.classList.remove('menu-open');
+    menuButton.setAttribute('aria-expanded', 'false');
+  });
+</script>
 </body>
 </html>

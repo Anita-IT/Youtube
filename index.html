@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://kit.fontawesome.com/b73eae2213.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="home-body">
   <!-- HEADER -->
   <header class="header">
 <div class="header-left">
-<img src="/image/hamburger.png" class="icon">
+<button class="open-menu" type="button" aria-expanded="false" aria-label="Open menu"><img src="/image/hamburger.png" class="icon"></button>
 <img src="image/youtube.png" class="logo">
 </div>
 <div class="header-center">
@@ -25,13 +25,97 @@
 </div>
 <div class="header-right">
 <button class="create-button"><img src="image/add.png" alt="Create" class="icon">Create</button>
-<img src="image/bell.png" class="icon">
+<div class="notification-menu"><button class="notification-button" type="button" aria-label="Notifications" aria-expanded="false" aria-controls="notifications-panel"><img src="image/bell.png" class="icon" alt=""></button>
+  <div class="notifications-panel" id="notifications-panel" hidden>
+  <div class="notifications-panel-header">
+    <h2>Notifications</h2>
+  <i class="fa-solid fa-gear"></i>
+  </div>
+
+ <h3 class="notification-group-title">Important</h3>
+ 
+ <div class="notification-item">
+  <img src="image/a man.jpeg" class="notification-avatar">
+  <div class="notification-copy">
+    <p class="notification-message">Halleluyah challenge is live now</p>
+    <p class="notification-time">15 hours ago</p>
+  </div>
+  <img src="image/shorts7.jpg" class="notification-thumbnail">
+  <i class="fa-solid fa-ellipsis-vertical notification-more"></i>
+ </div>
+  <div class="notification-item">
+  <img src="image/a man.jpeg" class="notification-avatar">
+  <div class="notification-copy">
+    <p class="notification-message">Halleluyah challenge is live now</p>
+    <p class="notification-time">15 hours ago</p>
+  </div>
+  <img src="image/shorts7.jpg" class="notification-thumbnail">
+  <i class="fa-solid fa-ellipsis-vertical notification-more"></i>
+ </div>
+  <div class="notification-item">
+  <img src="image/a man.jpeg" class="notification-avatar">
+  <div class="notification-copy">
+    <p class="notification-message">Halleluyah challenge is live now</p>
+    <p class="notification-time">15 hours ago</p>
+  </div>
+  <img src="image/shorts7.jpg" class="notification-thumbnail">
+  <i class="fa-solid fa-ellipsis-vertical notification-more"></i>
+ </div>
+ <hr>
+ <h3 class="notification-group-title">More notifications</h3>
+ <div class="notification-item">
+  <img src="image/a man.jpeg" class="notification-avatar">
+  <div class="notification-copy">
+    <p class="notification-message">Halleluyah challenge is live now</p>
+    <p class="notification-time">15 hours ago</p>
+  </div>
+  <img src="image/shorts7.jpg" class="notification-thumbnail">
+  <i class="fa-solid fa-ellipsis-vertical notification-more"></i>
+ </div>
+  <div class="notification-item">
+  <img src="image/a man.jpeg" class="notification-avatar">
+  <div class="notification-copy">
+    <p class="notification-message">Recommended: Where love lives</p>
+    <p class="notification-time">15 hours ago</p>
+  </div>
+  <img src="image/shorts7.jpg" class="notification-thumbnail">
+  <i class="fa-solid fa-ellipsis-vertical notification-more"></i>
+ </div>
+  <div class="notification-item">
+  <img src="image/a man.jpeg" class="notification-avatar">
+  <div class="notification-copy">
+    <p class="notification-message">Bambi told me he loves her</p>
+    <p class="notification-time"> 9 hours ago</p>
+  </div>
+  <img src="image/shorts4.jpg" class="notification-thumbnail">
+  <i class="fa-solid fa-ellipsis-vertical notification-more"></i>
+ </div>
+  <div class="notification-item">
+  <img src="image/arya starr.jpg" class="notification-avatar">
+  <div class="notification-copy">
+    <p class="notification-message">I love eating good food</p>
+    <p class="notification-time">12 hours ago</p>
+  </div>
+  <img src="image/shorts7.jpg" class="notification-thumbnail">
+  <i class="fa-solid fa-ellipsis-vertical notification-more"></i>
+ </div>
+ </div>
+</div>
+
 <div class="profile">A</div>
 </div>
   </header>  
   <!-- SIDEBAR -->
    <div class="page-layout">
     <nav class="sidebar" aria-label="sidebar">
+          <div class="drawer-header">
+    <button class="close-menu" type="button" aria-label="Close menu">
+        <img src="image/hamburger.png" class="icon" alt="">
+    </button>
+    <a href="index.html" aria-label="YouTube home">
+        <img src="image/youtube.png" class="logo" alt="YouTube">
+    </a>
+</div>
       <div>
         <a href="index.html" class="active sidebar-heading"><img src="image/house.png" width="30">Home</a>
         <a href="index.html" class="shorts"><i class="fa-brands fa-youtube-shorts icons"></i>Shorts</a>
@@ -177,6 +261,7 @@
    </div>
    <hr>
     </nav>
+    <button class="home-backdrop" type="button" aria-label="Close menu"></button>
     
    <!-- CATEGORY NAV -->
     <main class="main-content">
@@ -368,6 +453,40 @@
 
 </main>
 </div>
+<script>
+  const menuButton = document.querySelector('.open-menu');
+  const backdrop = document.querySelector('.home-backdrop');
+  const page = document.body;
+  const notificationButton = document.querySelector('.notification-button');
+  const notificationPanel = document.querySelector('.notifications-panel');
+  notificationButton.addEventListener('click', () => {
+  const isOpen = notificationPanel.hidden;
+  notificationPanel.hidden = !isOpen;
+  notificationButton.setAttribute('aria-expanded', isOpen);
+});
+document.addEventListener('click', (event) => {
+  const clickedInsidePanel = notificationPanel.contains(event.target);
+  const clickedBell = notificationButton.contains(event.target);
 
+  if (!clickedInsidePanel && !clickedBell) {
+    notificationPanel.hidden = true;
+    notificationButton.setAttribute('aria-expanded', 'false');
+  }
+});
+  menuButton.addEventListener('click', () => {
+    const isOpen = page.classList.toggle('menu-open');
+    menuButton.setAttribute('aria-expanded', isOpen);
+  });
+
+  backdrop.addEventListener('click', () => {
+    page.classList.remove('menu-open');
+    menuButton.setAttribute('aria-expanded', 'false');
+  });
+  const closeButton = document.querySelector('.close-menu');
+  closeButton.addEventListener('click', () => {
+  page.classList.remove('menu-open');
+  menuButton.setAttribute('aria-expanded', 'false');
+});
+</script>
 </body>
 </html>

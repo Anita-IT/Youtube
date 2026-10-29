@@ -39,7 +39,7 @@
     </a>
 </div>
       <div>
-        <a href="index.html" sidebar-heading"><img src="image/house.png" width="30">Home</a>
+        <a href="index.html" class="sidebar-heading"><img src="image/house.png" width="30">Home</a>
         <a href="index.html" class="shorts"><i class="fa-brands fa-youtube-shorts icons"></i>Shorts</a>
       </div>
 <hr>
@@ -257,6 +257,7 @@
     <script>
   const menuButton = document.querySelector('.open-menu');
   const backdrop = document.querySelector('.watch-backdrop');
+  const closeButton = document.querySelector('.close-menu');
   const page = document.body;
 
   menuButton.addEventListener('click', () => {
@@ -268,6 +269,10 @@
     page.classList.remove('menu-open');
     menuButton.setAttribute('aria-expanded', 'false');
   });
+  closeButton.addEventListener('click', () => {
+  page.classList.remove('menu-open');
+  menuButton.setAttribute('aria-expanded', 'false');
+});
 </script>
 </body>
 </html>

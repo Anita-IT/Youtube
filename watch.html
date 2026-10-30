@@ -26,7 +26,88 @@
         <div class="header-right">
             <button class="create-button" type="button"><img src="image/add.png" alt="" class="icon">Create</button>
             <img src="image/bell.png" class="icon" alt="Notifications">
-            <div class="profile" aria-label="Account">A</div>
+            
+
+<div class="profile-menu-wrapper"><button type="button" aria-label="Open profile menu" aria-expanded="false" aria-controls="profile-menu" class="profile">A</button>
+  <div class="profile-menu" id="profile-menu" hidden>
+    <div class="profile-menu-header">
+      <div class="profile-menu-avatar">A</div>
+    <div class="profile-menu-details">
+      <p class="profile-menu-name">Anita Chigbu</p>
+      <p class="profile-menu-handle">@AnitaChigbu-r9r</p>
+      <a href="" class="profile-channel-link">View your channel</a>
+    </div>
+    </div>
+    <hr>
+    <div class="profile-menu-content">
+    <button type="button" class="profile-menu-item">
+      <i class="fa-brands fa-google" aria-hidden="true"></i>
+      <span>Google Account</span>
+    </button>
+    <button type="button" class="profile-menu-item" data-submenu="switch-account">
+      <i class="fa-regular fa-circle-user" aria-hidden="true"></i>
+      <span>Switch account</span>
+      <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+    </button>
+    <button type="button" class="profile-menu-item">
+      <i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i>
+      <span>Sign out</span>
+    </button>
+    <hr>
+    <button type="button" class="profile-menu-item">
+      <i class="fa-solid fa-circle-play" aria-hidden="true"></i>
+      <span>YouTube Studio</span>
+    </button>
+    <button type="button" class="profile-menu-item">
+      <i class="fa-solid fa-dollar-sign" aria-hidden="true"></i>
+      <span>Purchases and memberships</span>
+    </button>
+    <hr>
+    <button type="button" class="profile-menu-item">
+      <i class="fa-regular fa-user" aria-hidden="true"></i>
+      <span>Your data in YouTube</span>
+    </button>
+    <button type="button" class="profile-menu-item" data-submenu="appearance">
+      <i class="fa-regular fa-moon" aria-hidden="true"></i>
+      <span>Appearance: Device theme</span>
+      <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+    </button>
+    <button type="button" class="profile-menu-item" data-submenu="display-language">
+      <i class="fa-solid fa-language" aria-hidden="true"></i>
+      <span>Display language: English</span>
+      <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+    </button>
+    <button type="button" class="profile-menu-item" data-submenu="restricted-mode">
+      <i class="fa-solid fa-user-gear" aria-hidden="true"></i>
+      <span>Restricted mode: Off</span>
+      <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+    </button>
+    <button type="button" class="profile-menu-item" data-submenu="location">
+      <i class="fa-solid fa-globe" aria-hidden="true"></i>
+      <span>Location: Nigeria</span>
+      <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+    </button>
+    <button type="button" class="profile-menu-item">
+      <i class="fa-regular fa-keyboard" aria-hidden="true"></i>
+      <span>Keyboard shortcuts</span>
+    </button>
+    <hr>
+    <button type="button" class="profile-menu-item">
+      <i class="fa-solid fa-gear" aria-hidden="true"></i>
+      <span>Settings</span>
+    </button>
+    <hr>
+    <button type="button" class="profile-menu-item">
+      <i class="fa-regular fa-circle-question" aria-hidden="true"></i>
+      <span>Help</span>
+    </button>
+    <button type="button" class="profile-menu-item">
+      <i class="fa-regular fa-message" aria-hidden="true"></i>
+      <span>Send feedback</span>
+    </button>
+    </div>
+  </div>
+</div>
         </div>
     </header>
   <nav class="sidebar watch-sidebar" aria-label="sidebar">
@@ -259,7 +340,13 @@
   const backdrop = document.querySelector('.watch-backdrop');
   const closeButton = document.querySelector('.close-menu');
   const page = document.body;
-
+  const profileButton = document.querySelector('.profile-menu-wrapper .profile');
+const profileMenu = document.querySelector('.profile-menu');
+profileButton.addEventListener('click', () => {
+  const isOpen = profileMenu.hidden;
+  profileMenu.hidden = !isOpen;
+  profileButton.setAttribute('aria-expanded', isOpen);
+});
   menuButton.addEventListener('click', () => {
     const isOpen = page.classList.toggle('menu-open');
     menuButton.setAttribute('aria-expanded', isOpen);

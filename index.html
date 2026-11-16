@@ -24,7 +24,28 @@
  <img src="/image/microphone.png" class="icon">
 </div>
 <div class="header-right">
-<button class="create-button"><img src="image/add.png" alt="Create" class="icon">Create</button>
+<div class="create-menu-wrapper" >
+  <button class="create-button" aria-controls="create-menu" aria-expanded="false" type="button"><img src="image/add.png" alt="Create" class="icon">Create</button>
+  <button class="create-menu-backdrop" type="button" aria-label="Close Create menu" hidden></button>
+<div class="create-menu" id="create-menu" hidden>
+  <div class="create-menu-item">
+    <i class="fa-regular fa-square-caret-right"></i>
+    <span>Upload video</span>
+  </div>
+
+   <div class="create-menu-item"> 
+    <i class="fa-solid fa-signal"></i>
+    <span>Go live</span>
+  </div>
+
+   <div class="create-menu-item">
+     <i class="fa-solid fa-file-pen"></i>
+    <span>Create post</span>
+  </div>
+  
+</div>
+</div>
+
 <div class="notification-menu"><button class="notification-button" type="button" aria-label="Notifications" aria-expanded="false" aria-controls="notifications-panel"><img src="image/bell.png" class="icon" alt=""></button>
   <div class="notifications-panel" id="notifications-panel" hidden>
   <div class="notifications-panel-header">
@@ -572,6 +593,20 @@ document.addEventListener('click', (event) => {
   closeButton.addEventListener('click', () => {
   page.classList.remove('menu-open');
   menuButton.setAttribute('aria-expanded', 'false');
+});
+const createButton = document.querySelector('.create-button');
+const createMenu = document.querySelector('.create-menu');
+const createMenuBackdrop = document.querySelector('.create-menu-backdrop');
+createButton.addEventListener('click', () => {
+  const isOpen = createMenu.hidden;
+  createMenu.hidden = !isOpen;
+  createMenuBackdrop.hidden = !isOpen;
+  createButton.setAttribute('aria-expanded', isOpen);
+});
+createMenuBackdrop.addEventListener('click', () => {
+  createMenu.hidden = true;
+  createMenuBackdrop.hidden = true;
+  createButton.setAttribute('aria-expanded', 'false');
 });
 </script>
 </body>
